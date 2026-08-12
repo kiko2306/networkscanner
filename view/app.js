@@ -36,7 +36,10 @@ const DEFAULT_SAVE_NAME = "NetworkHierarchy.updated.json"
 const API_BASE_URL = (() => {
     const host = window.location.hostname.toLowerCase()
     const isLocalHost = host === "localhost" || host === "127.0.0.1"
-    return isLocalHost ? "http://localhost:9008/api" : "https://api-lan-map.portoinf-server.com/api"
+    const isLocalDevPort = window.location.port === "9009"
+    return isLocalHost && isLocalDevPort
+        ? "http://localhost:9008/api"
+        : "https://api-lan-map.portoinf-server.com/api"
 })()
 
 const ICON_CHOICES = [
