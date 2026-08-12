@@ -19,6 +19,13 @@ param(
 
 $script:VendorCache = @{}
 $script:LocalIPv4Cache = $null
+$ProgressPreference = "Continue"
+if ($PSVersionTable.PSVersion.Major -ge 7) {
+    try {
+        $PSStyle.Progress.View = "Classic"
+    } catch {
+    }
+}
 
 function Get-MacVendor {
     param(

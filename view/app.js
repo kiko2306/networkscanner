@@ -33,7 +33,11 @@ const newUserPasswordInput = document.getElementById("new-user-password")
 const createUserButton = document.getElementById("create-user-button")
 
 const DEFAULT_SAVE_NAME = "NetworkHierarchy.updated.json"
-const API_BASE_URL = "http://localhost:9008/api"
+const API_BASE_URL = (() => {
+    const host = window.location.hostname.toLowerCase()
+    const isLocalHost = host === "localhost" || host === "127.0.0.1"
+    return isLocalHost ? "http://localhost:9008/api" : "https://api-lan-map.portoinf-server.com/api"
+})()
 
 const ICON_CHOICES = [
     { key: "auto", label: "Auto detect", icon: "?" },
@@ -443,7 +447,7 @@ async function refreshSavedMaps() {
         deleteSelectedMapButton.disabled = true
         setStatus(`Loaded ${cachedMaps.length} saved map entries.`)
     } catch (error) {
-        setStatus("Could not fetch saved maps from API. Ensure API is running on localhost:9008.", true)
+        setStatus(`Could not fetch saved maps from API (${API_BASE_URL}).`, true)
         console.error(error)
     }
 }
