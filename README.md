@@ -23,6 +23,7 @@ The frontend build includes `view/download/network-scanner.exe` and exposes a he
 The downloaded EXE is a launcher that runs the scanner with `pwsh` (PowerShell 7) when available for better performance.
 The scanner always prints throttled text progress updates (and also uses `Write-Progress` when available), so EXE runs show visible progress in all hosts.
 The launcher writes the runtime script as UTF-8 with BOM to keep compatibility with Windows PowerShell 5.1 parsing on other machines.
+The download link automatically appends a cache-bypass query token so users always fetch the latest EXE build.
 
 ## Authentication
 - First access: create the initial admin user in the UI.

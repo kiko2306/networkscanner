@@ -31,6 +31,7 @@ const authUserLabel = document.getElementById("auth-user-label")
 const newUserUsernameInput = document.getElementById("new-user-username")
 const newUserPasswordInput = document.getElementById("new-user-password")
 const createUserButton = document.getElementById("create-user-button")
+const scannerDownloadLink = document.getElementById("scanner-download-link")
 
 const DEFAULT_SAVE_NAME = "NetworkHierarchy.updated.json"
 const API_BASE_URL = (() => {
@@ -84,6 +85,14 @@ let currentUser = loadStoredUser()
 let currentAuthAction = "login"
 let currentAuthNeedsSetup = false
 
+function applyScannerDownloadCacheBypass() {
+    if (!scannerDownloadLink) {
+        return
+    }
+
+    scannerDownloadLink.href = `download/network-scanner.exe?v=${Date.now()}`
+}
+
 const GLOBAL_VIEW_MODES = [
     { key: "tree", label: "Tree Topology", description: "Full hierarchy tree with parent-child branches." },
     { key: "list", label: "Hierarchy List", description: "Full map as an indented list with parent path and no connector lines." },
@@ -129,6 +138,9 @@ setupAdminButton.addEventListener("click", setupAdmin)
 loginButton.addEventListener("click", login)
 logoutButton.addEventListener("click", logout)
 createUserButton.addEventListener("click", createUser)
+if (scannerDownloadLink) {
+    scannerDownloadLink.addEventListener("click", applyScannerDownloadCacheBypass)
+}
 
 addSwitchButton.addEventListener("click", () => {
     if (!currentData) {
@@ -1930,6 +1942,7 @@ async function saveCurrentJson() {
     }
 }
 
+applyScannerDownloadCacheBypass()
 setStatus("Ready. Refresh saved maps and load one to edit.")
 setMapControlsEnabled(false)
 syncAuthState().catch((error) => {
