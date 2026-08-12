@@ -40,6 +40,9 @@ Useful options:
 	`.\network-scanner.ps1 -SubnetRanges 192.168.1.,10.0.0.`
 - Provide API key directly:
 	`.\network-scanner.ps1 -ApiKey <your_api_key>`
+- Default API URL:
+	`https://api-lan-map.portoinf-server.com/`
+
 
 Notes:
 - If no subnet is provided, the script asks whether to scan all local subnets (Enter defaults to Yes).

@@ -2,7 +2,7 @@ param(
     [string[]]$SubnetRanges = @(),
     [string]$SubnetRange = "",
     [string]$MapName,
-    [string]$ApiBaseUrl = "http://localhost:9006",
+    [string]$ApiBaseUrl = "https://api-lan-map.portoinf-server.com/",
     [string]$ApiKey = "c3f1d5b8e6a44f4d8f8e3f2b1a9c6d70",
     [int]$ApiTimeoutSec = 120,
     [string]$OutputFolder = "output",
