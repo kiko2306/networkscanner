@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: view/Dockerfile
     ports:
-      - "9005:80"
+      - "9009:80"
     depends_on:
       - api
 

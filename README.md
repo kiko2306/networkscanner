@@ -5,7 +5,7 @@ This project scans local network subnets and stores maps in a local API/database
 
 It includes:
 - `network-scanner.ps1`: PowerShell scanner and uploader.
-- Web UI at `http://localhost:9005`: view/edit topology maps.
+- Web UI at `http://localhost:9009`: view/edit topology maps.
 - API at `http://localhost:9008`: authentication and map storage.
 
 ## Quick Start
@@ -16,7 +16,7 @@ It includes:
 3. Run the scanner:
 	`.\\network-scanner.ps1`
 4. Open the web UI:
-	`http://localhost:9005`
+	`http://localhost:9009`
 
 The API creates the SQLite database file automatically if it does not exist.
 The frontend build includes `view/download/network-scanner.exe` and exposes a header link to download it.
