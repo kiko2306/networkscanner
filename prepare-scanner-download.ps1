@@ -68,6 +68,6 @@ Set-Content -Path $launcherPs1 -Value $launcherContent -Encoding UTF8
 
 Set-PSRepository PSGallery -InstallationPolicy Trusted
 Install-Module -Name ps2exe -Scope CurrentUser -Force
-Invoke-PS2EXE -InputFile $launcherPs1 -OutputFile $outputFile
+Invoke-PS2EXE -InputFile $launcherPs1 -OutputFile $outputFile -conHost
 
 Write-Host "Scanner executable generated: $outputFile"

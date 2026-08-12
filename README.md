@@ -21,6 +21,7 @@ It includes:
 The API creates the SQLite database file automatically if it does not exist.
 The frontend build includes `view/download/network-scanner.exe` and exposes a header link to download it.
 The downloaded EXE is a launcher that runs the scanner with `pwsh` (PowerShell 7) when available for better performance.
+The scanner always prints throttled text progress updates (and also uses `Write-Progress` when available), so EXE runs show visible progress in all hosts.
 
 ## Authentication
 - First access: create the initial admin user in the UI.
