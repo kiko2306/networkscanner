@@ -93,6 +93,43 @@ function applyScannerDownloadCacheBypass() {
     scannerDownloadLink.href = `download/network-scanner.exe?v=${Date.now()}`
 }
 
+async function downloadScannerExe(event) {
+    event.preventDefault()
+
+    if (!scannerDownloadLink) {
+        return
+    }
+
+    const downloadUrl = `download/network-scanner.exe?v=${Date.now()}`
+    scannerDownloadLink.href = downloadUrl
+
+    try {
+        const response = await fetch(downloadUrl, {
+            cache: "no-store",
+            headers: {
+                "Cache-Control": "no-cache"
+            }
+        })
+
+        if (!response.ok) {
+            throw new Error(`Download failed with status ${response.status}`)
+        }
+
+        const blob = await response.blob()
+        const blobUrl = URL.createObjectURL(blob)
+        const tempLink = document.createElement("a")
+        tempLink.href = blobUrl
+        tempLink.download = "network-scanner.exe"
+        document.body.appendChild(tempLink)
+        tempLink.click()
+        tempLink.remove()
+        URL.revokeObjectURL(blobUrl)
+    } catch (error) {
+        console.error(error)
+        setStatus("Could not download scanner. Try again.", true)
+    }
+}
+
 const GLOBAL_VIEW_MODES = [
     { key: "tree", label: "Tree Topology", description: "Full hierarchy tree with parent-child branches." },
     { key: "list", label: "Hierarchy List", description: "Full map as an indented list with parent path and no connector lines." },
@@ -139,7 +176,7 @@ loginButton.addEventListener("click", login)
 logoutButton.addEventListener("click", logout)
 createUserButton.addEventListener("click", createUser)
 if (scannerDownloadLink) {
-    scannerDownloadLink.addEventListener("click", applyScannerDownloadCacheBypass)
+    scannerDownloadLink.addEventListener("click", downloadScannerExe)
 }
 
 addSwitchButton.addEventListener("click", () => {

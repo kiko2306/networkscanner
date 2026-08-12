@@ -24,6 +24,7 @@ The downloaded EXE is a launcher that runs the scanner with `pwsh` (PowerShell 7
 The scanner always prints throttled text progress updates (and also uses `Write-Progress` when available), so EXE runs show visible progress in all hosts.
 The launcher writes the runtime script as UTF-8 with BOM to keep compatibility with Windows PowerShell 5.1 parsing on other machines.
 The download link automatically appends a cache-bypass query token so users always fetch the latest EXE build.
+The web app now downloads the EXE through a `fetch` request with `cache: no-store`, and nginx sets no-cache headers on `/download/network-scanner.exe`.
 
 ## Authentication
 - First access: create the initial admin user in the UI.
