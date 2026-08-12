@@ -37,9 +37,17 @@ const API_BASE_URL = (() => {
     const host = window.location.hostname.toLowerCase()
     const isLocalHost = host === "localhost" || host === "127.0.0.1"
     const isLocalDevPort = window.location.port === "9009"
-    return isLocalHost && isLocalDevPort
-        ? "http://localhost:9008/api"
-        : "https://api-lan-map.portoinf-server.com/api"
+    const isCloudflareFrontendHost = host === "lan-map.portoinf-server.com"
+
+    if (isLocalHost && isLocalDevPort) {
+        return "http://localhost:9008/api"
+    }
+
+    if (isCloudflareFrontendHost) {
+        return "https://api-lan-map.portoinf-server.com/api"
+    }
+
+    return "/api"
 })()
 
 const ICON_CHOICES = [
