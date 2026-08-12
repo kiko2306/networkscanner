@@ -1,0 +1,264 @@
+{
+  "DeviceIconKey": "gateway",
+  "DeviceIcon": "🌐",
+  "Name": "Main Router (192.168.1.254)",
+  "Children": [
+    {
+      "DeviceIconKey": "printer",
+      "FirstSeen": "08/12/2026 09:32:02",
+      "MACAddress": "B4-22-00-18-5B-00",
+      "DiscoveryEvidence": [
+        "ICMP",
+        "ARP"
+      ],
+      "DeviceIcon": "🖨",
+      "Name": "BRNB42200185B00",
+      "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+      "SnmpSysName": null,
+      "IPAddress": "192.168.1.111",
+      "OpenTcpPorts": [
+        80,
+        443,
+        9100
+      ],
+      "AdminUser": "",
+      "AdminPassword": "",
+      "RoleGuess": "Printer",
+      "ModelVendor": "Brother Industries, LTD.",
+      "Ping": {
+        "Sent": 4,
+        "PacketLossPct": 0,
+        "MaxMs": 1,
+        "Received": 4,
+        "MinMs": 1,
+        "AvgMs": 1
+      },
+      "Type": "End-Device",
+      "Children": []
+    },
+    {
+      "DeviceIconKey": "unknown",
+      "FirstSeen": "08/12/2026 09:32:02",
+      "MACAddress": "52-B4-56-DA-F3-35",
+      "DiscoveryEvidence": [
+        "ICMP",
+        "ARP"
+      ],
+      "DeviceIcon": "❔",
+      "Name": "Redmi-Note-13-Pro-5G",
+      "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+      "SnmpSysName": null,
+      "IPAddress": "192.168.1.140",
+      "OpenTcpPorts": null,
+      "AdminUser": "",
+      "AdminPassword": "",
+      "RoleGuess": "Unknown-End-Device",
+      "ModelVendor": "Unknown Vendor",
+      "Ping": {
+        "Sent": 4,
+        "PacketLossPct": 0,
+        "MaxMs": 343,
+        "Received": 4,
+        "MinMs": 85,
+        "AvgMs": 272.25
+      },
+      "Type": "End-Device",
+      "Children": []
+    },
+    {
+      "DeviceIconKey": "workstation",
+      "FirstSeen": "08/12/2026 09:32:02",
+      "MACAddress": "98-E7-43-A5-2C-BA",
+      "DiscoveryEvidence": [
+        "ICMP",
+        "ARP"
+      ],
+      "DeviceIcon": "💻",
+      "Name": "FR_NOTEB",
+      "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+      "SnmpSysName": null,
+      "IPAddress": "192.168.1.15",
+      "OpenTcpPorts": [
+        80,
+        445,
+        3389
+      ],
+      "AdminUser": "",
+      "AdminPassword": "",
+      "RoleGuess": "Windows-Host",
+      "ModelVendor": "Dell Inc.",
+      "Ping": {
+        "Sent": 4,
+        "PacketLossPct": 0,
+        "MaxMs": 2,
+        "Received": 4,
+        "MinMs": 0,
+        "AvgMs": 1.25
+      },
+      "Type": "End-Device",
+      "Children": []
+    },
+    {
+      "DeviceIconKey": "unknown",
+      "FirstSeen": "08/12/2026 09:32:02",
+      "MACAddress": "EC-C8-9C-B0-2F-4A",
+      "DiscoveryEvidence": [
+        "ICMP",
+        "ARP"
+      ],
+      "DeviceIcon": "❔",
+      "Name": "Unknown-Device",
+      "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+      "SnmpSysName": null,
+      "IPAddress": "192.168.1.30",
+      "OpenTcpPorts": null,
+      "AdminUser": "",
+      "AdminPassword": "",
+      "RoleGuess": "Unknown-End-Device",
+      "ModelVendor": "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+      "Ping": {
+        "Sent": 4,
+        "PacketLossPct": 0,
+        "MaxMs": 1,
+        "Received": 4,
+        "MinMs": 0,
+        "AvgMs": 0.75
+      },
+      "Type": "End-Device",
+      "Children": []
+    },
+    {
+      "DeviceIconKey": "ap",
+      "FirstSeen": "08/12/2026 09:32:02",
+      "MACAddress": "24-5E-BE-71-69-AB",
+      "DiscoveryEvidence": [
+        "ICMP",
+        "ARP"
+      ],
+      "DeviceIcon": "📡",
+      "Name": "NAS7169AB",
+      "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+      "SnmpSysName": null,
+      "IPAddress": "192.168.1.50",
+      "OpenTcpPorts": [
+        443,
+        445
+      ],
+      "AdminUser": "",
+      "AdminPassword": "",
+      "RoleGuess": "Access-Point",
+      "ModelVendor": "QNAP Systems, Inc.",
+      "Ping": {
+        "Sent": 4,
+        "PacketLossPct": 0,
+        "MaxMs": 0,
+        "Received": 4,
+        "MinMs": 0,
+        "AvgMs": 0
+      },
+      "Type": "End-Device",
+      "Children": []
+    },
+    {
+      "Name": "Dumb Switch 1",
+      "Type": "Dumb-Switch",
+      "RoleGuess": "Switch",
+      "DeviceIconKey": "switch",
+      "DeviceIcon": "🔀",
+      "AdminUser": "",
+      "AdminPassword": "",
+      "Children": [
+        {
+          "DeviceIconKey": "printer",
+          "FirstSeen": "08/12/2026 09:32:02",
+          "MACAddress": "FC-4D-D4-D4-46-FF",
+          "DiscoveryEvidence": [
+            "ICMP",
+            "ARP"
+          ],
+          "DeviceIcon": "🖨",
+          "Name": "pi-srv-live-01",
+          "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+          "SnmpSysName": null,
+          "IPAddress": "192.168.1.207",
+          "OpenTcpPorts": [
+            22,
+            80,
+            443,
+            9100
+          ],
+          "AdminUser": "",
+          "AdminPassword": "",
+          "RoleGuess": "Printer",
+          "ModelVendor": "Universal Global Scientific Industrial., Ltd",
+          "Ping": {
+            "Sent": 4,
+            "PacketLossPct": 0,
+            "MaxMs": 0,
+            "Received": 4,
+            "MinMs": 0,
+            "AvgMs": 0
+          },
+          "Type": "End-Device",
+          "Children": []
+        },
+        {
+          "DeviceIconKey": "server",
+          "FirstSeen": "08/12/2026 09:32:02",
+          "MACAddress": "Unknown",
+          "DiscoveryEvidence": [
+            "ICMP",
+            "ARP"
+          ],
+          "DeviceIcon": "🖥",
+          "Name": "PRT-DEV-01",
+          "LastSeen": "2026-08-12T10:37:39.7852391+01:00",
+          "SnmpSysName": null,
+          "IPAddress": "192.168.1.138",
+          "OpenTcpPorts": [
+            80,
+            445
+          ],
+          "AdminUser": "",
+          "AdminPassword": "",
+          "RoleGuess": "File-Server-Or-Workstation",
+          "ModelVendor": "Unknown Vendor",
+          "Ping": {
+            "Sent": 4,
+            "PacketLossPct": 0,
+            "MaxMs": 0,
+            "Received": 4,
+            "MinMs": 0,
+            "AvgMs": 0
+          },
+          "Type": "End-Device",
+          "Children": []
+        }
+      ]
+    }
+  ],
+  "ScanDiff": {
+    "NewDevices": [],
+    "RemovedDevices": [],
+    "ChangedDevices": [
+      {
+        "ChangedFields": "Name",
+        "IPAddress": "192.168.1.138",
+        "Name": "PRT-DEV-01"
+      }
+    ]
+  },
+  "ScanSummary": {
+    "SnmpDiscoveryEnabled": false,
+    "PortScanEnabled": true,
+    "DirectChildrenCount": 7,
+    "ActiveDeviceCount": 7,
+    "RemovedDeviceCount": 0,
+    "ChangedDeviceCount": 1,
+    "ScannedAt": "2026-08-12T10:37:39.7852391+01:00",
+    "NewDeviceCount": 0
+  },
+  "UplinkMACAddress": "34-48-ED-9A-11-22",
+  "ScannedAt": "2026-08-12T10:37:39.7852391+01:00",
+  "Type": "Gateway"
+}

@@ -1,0 +1,22 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: view/Dockerfile
+    ports:
+      - "9005:80"
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./api
+    ports:
+      - "9006:9006"
+    environment:
+      - PORT=9006
+      - CORS_ORIGIN=*
+      - API_KEY=c3f1d5b8e6a44f4d8f8e3f2b1a9c6d70
+      - DB_FILE=/app/data/networkmaps.db
+    volumes:
+      - ./api/data:/app/data

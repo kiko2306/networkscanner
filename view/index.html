@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network Map Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-main">
+      <div class="topbar-brand">
+        <img src="img/logo.jpg" alt="Network Map logo" class="header-logo">
+        <div class="topbar-brand-text">
+          <h1>Network Map Viewer</h1>
+          <p>Visual layout from generated network JSON.</p>
+          <a class="scanner-download-link" href="download/network-scanner.exe" download>Download Network Scanner</a>
+        </div>
+      </div>
+      <div class="auth-shell" aria-label="Authentication menu">
+        <span id="auth-user-label" class="auth-user-label" hidden>signed-in-user</span>
+        <div class="auth-menu" id="auth-menu">
+          <button id="auth-setup-action" class="auth-menu-button" type="button" hidden>First Access Setup</button>
+          <button id="auth-login-action" class="auth-menu-button" type="button" hidden>Sign In</button>
+          <button id="auth-create-action" class="auth-menu-button" type="button" hidden>Create User</button>
+          <button id="logout-button" class="auth-menu-button logout" type="button" hidden>Logout</button>
+        </div>
+        <div class="auth-panel">
+          <div class="control-row auth-box" id="auth-setup-box" hidden>
+            <strong>First Access Setup</strong>
+            <input id="setup-username" type="text" placeholder="Admin username" autocomplete="off">
+            <input id="setup-password" type="password" placeholder="Admin password" autocomplete="off">
+            <button id="setup-admin" type="button">Create Admin User</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view-tabs" role="tablist" aria-label="View mode">
+      <button id="builder-tab" class="view-tab active" type="button">Topology Builder</button>
+      <button id="global-tab" class="view-tab" type="button">Global Wired View</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls">
+      <h2>Data Source</h2>
+      <p class="hint">Scanner maps are uploaded from network-scanner.ps1 to the API.</p>
+      <div class="control-row">
+        <button id="refresh-maps" type="button">Refresh Saved Maps</button>
+        <select id="saved-maps">
+          <option value="">Select a saved map</option>
+        </select>
+        <button id="load-selected-map" type="button" disabled>Load Selected Map</button>
+        <button id="delete-selected-map" type="button" disabled>Delete Selected Map</button>
+        <button id="add-switch" type="button" disabled>Add Dumb Switch</button>
+        <button id="save-json" type="button" disabled>Upload To API</button>
+      </div>
+      <p id="status" class="status">Ready.</p>
+      <p class="hint">Drag a device onto a dumb switch to attach it. Drag a switch onto another switch to cascade it.
+      </p>
+
+      <h3>Legend</h3>
+      <ul class="legend">
+        <li><span class="dot gateway"></span> Gateway</li>
+        <li><span class="dot managed"></span> Dumb Switch</li>
+        <li><span class="dot ap"></span> Access Point</li>
+        <li><span class="dot endpoint"></span> End Device</li>
+      </ul>
+    </section>
+
+    <section class="panel viewer builder-panel">
+      <div class="builder-header">
+        <h2 id="view-title">Topology Builder</h2>
+        <p id="view-description">Build your dumb switch layout manually, including cascaded switches.</p>
+      </div>
+      <div id="tree-builder" class="tree-builder">
+        <div class="empty-builder">Load a saved map from the API to begin building a manual topology.</div>
+      </div>
+    </section>
+
+    <aside class="panel details">
+      <h2>Node Details</h2>
+      <div id="details-content" class="details-content">
+        Select a node to inspect metadata.
+      </div>
+    </aside>
+  </main>
+
+  <div id="create-user-modal" class="modal-overlay" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="create-user-title">
+      <div class="modal-header">
+        <strong id="create-user-title">Create User</strong>
+        <button id="close-create-user-modal" class="modal-close" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="control-row auth-box modal-form-box">
+        <input id="new-user-username" type="text" placeholder="New username" autocomplete="off">
+        <input id="new-user-password" type="password" placeholder="New password" autocomplete="off">
+        <button id="create-user-button" type="button">Create User</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sign-in-modal" class="modal-overlay" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="sign-in-title">
+      <div class="modal-header">
+        <strong id="sign-in-title">Sign In</strong>
+        <button id="close-sign-in-modal" class="modal-close" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="control-row auth-box modal-form-box">
+        <input id="login-username" type="text" placeholder="Username" autocomplete="off">
+        <input id="login-password" type="password" placeholder="Password" autocomplete="off">
+        <button id="login-button" type="button">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
