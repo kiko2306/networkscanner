@@ -19,16 +19,18 @@ $launcherContent = @"
 `$PassThroughArgs = @(`$args)
 
 `$scriptBytes = [Convert]::FromBase64String("$scannerBase64")
+`$scriptText = [System.Text.Encoding]::UTF8.GetString(`$scriptBytes)
+`$utf8Bom = [System.Text.UTF8Encoding]::new(`$true)
 `$launchDir = [System.AppContext]::BaseDirectory
 `$scannerPath = Join-Path `$launchDir "network-scanner.runtime.ps1"
 
 try {
-    [System.IO.File]::WriteAllBytes(`$scannerPath, `$scriptBytes)
+    [System.IO.File]::WriteAllText(`$scannerPath, `$scriptText, `$utf8Bom)
 } catch {
     `$fallbackDir = Join-Path `$env:TEMP "network-scanner"
     New-Item -ItemType Directory -Path `$fallbackDir -Force | Out-Null
     `$scannerPath = Join-Path `$fallbackDir "network-scanner.runtime.ps1"
-    [System.IO.File]::WriteAllBytes(`$scannerPath, `$scriptBytes)
+    [System.IO.File]::WriteAllText(`$scannerPath, `$scriptText, `$utf8Bom)
 }
 
 `$pwshCommand = Get-Command -Name "pwsh.exe" -ErrorAction SilentlyContinue

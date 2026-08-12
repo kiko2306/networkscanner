@@ -420,27 +420,27 @@ function Get-DeviceIconInfo {
     )
 
     if ($DeviceType -eq "Gateway") {
-        return @{ Key = "gateway"; Icon = "🌐" }
+        return @{ Key = "gateway"; Icon = "[GW]" }
     }
 
     switch ($RoleGuess) {
-        "Access-Point" { return @{ Key = "ap"; Icon = "📡" } }
-        "Wireless-Router" { return @{ Key = "router"; Icon = "📶" } }
-        "Router" { return @{ Key = "router"; Icon = "📶" } }
-        "Managed-Switch-Or-Appliance" { return @{ Key = "switch"; Icon = "🔀" } }
-        "Printer" { return @{ Key = "printer"; Icon = "🖨" } }
-        "Camera-Or-NVR" { return @{ Key = "camera"; Icon = "📷" } }
-        "Windows-Host" { return @{ Key = "workstation"; Icon = "💻" } }
-        "File-Server-Or-Workstation" { return @{ Key = "server"; Icon = "🖥" } }
-        "Linux-Or-Network-Appliance" { return @{ Key = "server"; Icon = "🖥" } }
+        "Access-Point" { return @{ Key = "ap"; Icon = "[AP]" } }
+        "Wireless-Router" { return @{ Key = "router"; Icon = "[RT]" } }
+        "Router" { return @{ Key = "router"; Icon = "[RT]" } }
+        "Managed-Switch-Or-Appliance" { return @{ Key = "switch"; Icon = "[SW]" } }
+        "Printer" { return @{ Key = "printer"; Icon = "[PR]" } }
+        "Camera-Or-NVR" { return @{ Key = "camera"; Icon = "[CAM]" } }
+        "Windows-Host" { return @{ Key = "workstation"; Icon = "[PC]" } }
+        "File-Server-Or-Workstation" { return @{ Key = "server"; Icon = "[SRV]" } }
+        "Linux-Or-Network-Appliance" { return @{ Key = "server"; Icon = "[SRV]" } }
     }
 
     $Name = "$HostName"
-    if ($Name -match "(?i)(printer|hp|canon|epson|brother)") { return @{ Key = "printer"; Icon = "🖨" } }
-    if ($Name -match "(?i)(camera|cam|nvr|dvr)") { return @{ Key = "camera"; Icon = "📷" } }
-    if ($Name -match "(?i)(ap|wifi|wlan|access[\s-]*point)") { return @{ Key = "ap"; Icon = "📡" } }
+    if ($Name -match "(?i)(printer|hp|canon|epson|brother)") { return @{ Key = "printer"; Icon = "[PR]" } }
+    if ($Name -match "(?i)(camera|cam|nvr|dvr)") { return @{ Key = "camera"; Icon = "[CAM]" } }
+    if ($Name -match "(?i)(ap|wifi|wlan|access[\s-]*point)") { return @{ Key = "ap"; Icon = "[AP]" } }
 
-    return @{ Key = "unknown"; Icon = "❔" }
+    return @{ Key = "unknown"; Icon = "[?]" }
 }
 
 function Get-IpLookupFromTree {
@@ -514,6 +514,11 @@ function Normalize-SubnetPrefix {
     }
 
     $Trimmed = $Prefix.Trim()
+    if ($Trimmed -match '^127\.') {
+        Write-Warning "Skipping loopback subnet prefix '$Trimmed'."
+        return $null
+    }
+
     if ($Trimmed.EndsWith(".")) {
         return $Trimmed
     }
@@ -653,7 +658,7 @@ $NetworkTree = @{
     ScannedAt = $ScanTimestamp
     UplinkMACAddress = $UplinkMacAddress
     DeviceIconKey = "gateway"
-    DeviceIcon = "🌐"
+    DeviceIcon = "[GW]"
     Children = @()
 }
 

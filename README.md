@@ -22,6 +22,7 @@ The API creates the SQLite database file automatically if it does not exist.
 The frontend build includes `view/download/network-scanner.exe` and exposes a header link to download it.
 The downloaded EXE is a launcher that runs the scanner with `pwsh` (PowerShell 7) when available for better performance.
 The scanner always prints throttled text progress updates (and also uses `Write-Progress` when available), so EXE runs show visible progress in all hosts.
+The launcher writes the runtime script as UTF-8 with BOM to keep compatibility with Windows PowerShell 5.1 parsing on other machines.
 
 ## Authentication
 - First access: create the initial admin user in the UI.
@@ -47,6 +48,7 @@ Useful options:
 
 Notes:
 - If no subnet is provided, the script asks whether to scan all local subnets (Enter defaults to Yes).
+- Loopback subnet prefixes like `127.x.x.` are ignored automatically.
 - Upload uses `x-api-key`.
 - Local output JSON is removed after successful upload.
 
